@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+/**
+ * simple redis benchmark script
+ * @author sunny.w
+ *
+ */
+require __DIR__.'/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use sunnyw\RedisBench\Console;
+
+date_default_timezone_set('PRC');
+
+$app=new Application;
+
+$console=new Console();
+
+$app->add($console);
+$app->setDefaultCommand($console->getName(), true);
+
+$app->setName('redis benchmark tool');
+$app->setVersion('v1.0 by wangxi <iwisunny@gmail.com>');
+
+$app->run();
